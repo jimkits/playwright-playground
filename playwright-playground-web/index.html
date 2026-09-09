@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayLab Training</title>
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content" data-testid="a11y-skip-link">Skip to main content</a>
+  <div id="app-header"></div>
+
+  <main id="main-content">
+    <div class="page-intro">
+      <div class="page-header">
+        <h1>PlayLab Training</h1>
+        <p>A personal practice site with 19 sections, each a distinct set of page objects to automate.</p>
+      </div>
+      <ul class="section-grid" role="list" data-testid="home-section-grid"></ul>
+    </div>
+
+    <!-- 01 :: Form Elements -->
+    <section id="form-elements" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">01</span>
+        <h2 class="section-divider__title">Form Elements</h2>
+        <p class="section-divider__subtitle">The widest range of input types and dropdown variants for locator practice.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Registration Form</h3>
+          <form data-testid="form-elements-registration-form" novalidate>
+            <div class="form-field">
+              <label for="fe-fullname">Full Name</label>
+              <input type="text" id="fe-fullname" data-testid="form-elements-input-fullname" />
+            </div>
+            <div class="form-field">
+              <label for="fe-email">Email</label>
+              <input type="email" id="fe-email" data-testid="form-elements-input-email" />
+            </div>
+            <div class="form-field">
+              <label for="fe-password">Password</label>
+              <input type="password" id="fe-password" data-testid="form-elements-input-password" />
+            </div>
+            <div class="form-field">
+              <label for="fe-phone">Phone</label>
+              <input type="tel" id="fe-phone" data-testid="form-elements-input-phone" />
+            </div>
+            <div class="form-field">
+              <label for="fe-dob">Date of Birth</label>
+              <input type="date" id="fe-dob" data-testid="form-elements-input-dob" />
+            </div>
+            <div class="form-field">
+              <label for="fe-country">Country</label>
+              <select id="fe-country" data-testid="form-elements-select-country">
+                <option value="">Select a country</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Gender</label>
+              <div data-testid="form-elements-radio-gender-group">
+                <label><input type="radio" name="fe-gender" value="Male" data-testid="form-elements-radio-gender-male" /> Male</label>
+                <label style="margin-left:1rem;"><input type="radio" name="fe-gender" value="Female" data-testid="form-elements-radio-gender-female" /> Female</label>
+                <label style="margin-left:1rem;"><input type="radio" name="fe-gender" value="Other" data-testid="form-elements-radio-gender-other" /> Other</label>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Skills</label>
+              <div data-testid="form-elements-checkbox-skills-group"></div>
+            </div>
+            <div class="form-field">
+              <label for="fe-bio">Bio</label>
+              <textarea id="fe-bio" data-testid="form-elements-textarea-bio"></textarea>
+            </div>
+            <button type="submit" class="btn" data-testid="form-elements-submit-btn">Submit</button>
+            <button type="reset" class="btn btn--secondary" data-testid="form-elements-reset-btn">Reset</button>
+            <p class="form-hint" role="status" data-testid="form-elements-submit-result" hidden></p>
+          </form>
+        </div>
+
+        <div class="section-block">
+          <h3>Sliders & Color</h3>
+          <div class="form-field">
+            <label for="fe-volume">Volume</label>
+            <input type="range" id="fe-volume" min="0" max="100" value="50" data-testid="form-elements-slider-volume" />
+            <span data-testid="form-elements-slider-volume-value">50</span>
+          </div>
+          <div class="form-field">
+            <label>Price range</label>
+            <div style="position:relative; height:32px;">
+              <input type="range" min="0" max="500" value="50" data-testid="form-elements-slider-price-min" style="position:absolute; width:100%;" />
+              <input type="range" min="0" max="500" value="350" data-testid="form-elements-slider-price-max" style="position:absolute; width:100%;" />
+            </div>
+            <span data-testid="form-elements-slider-price-value">£50 - £350</span>
+          </div>
+          <div class="form-field">
+            <label for="fe-color">Favorite color</label>
+            <input type="color" id="fe-color" value="#6366f1" data-testid="form-elements-input-color" />
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>File Upload</h3>
+          <div data-testid="form-elements-upload-dropzone" style="border:2px dashed var(--color-border); border-radius:8px; padding:2rem; text-align:center;">
+            <p>Drag & drop a file here, or click to browse</p>
+            <input type="file" data-testid="form-elements-upload-input" style="display:none;" />
+          </div>
+          <div class="progress-bar" style="margin-top:1rem;">
+            <div class="progress-bar__fill" data-testid="form-elements-upload-progress"></div>
+          </div>
+          <p class="form-hint" data-testid="form-elements-upload-filename"></p>
+        </div>
+
+        <div class="section-block">
+          <h3>Auto-suggest Search</h3>
+          <div style="position:relative; max-width:320px;">
+            <input type="text" placeholder="Search topics..." data-testid="form-elements-autosuggest-input" />
+            <ul class="dropdown__menu" role="listbox" hidden data-testid="form-elements-autosuggest-results"></ul>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Multi-select Frameworks</h3>
+          <select multiple size="5" data-testid="form-elements-multiselect-frameworks" style="width:260px;"></select>
+        </div>
+
+        <div class="section-block">
+          <h3>Dropdown Variants</h3>
+
+          <div class="form-field">
+            <label>Custom dropdown</label>
+            <div class="dropdown" data-testid="form-elements-dropdown-custom">
+              <button type="button" class="dropdown__toggle" data-testid="form-elements-dropdown-custom-toggle" aria-haspopup="true" aria-expanded="false">
+                <span data-testid="form-elements-dropdown-custom-label">Choose a framework</span> ▾
+              </button>
+              <ul class="dropdown__menu" role="listbox" hidden data-testid="form-elements-dropdown-custom-menu"></ul>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Searchable dropdown</label>
+            <div class="dropdown" data-testid="form-elements-dropdown-searchable">
+              <input type="text" placeholder="Search country..." data-testid="form-elements-dropdown-searchable-input" />
+              <ul class="dropdown__menu" role="listbox" hidden data-testid="form-elements-dropdown-searchable-menu"></ul>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Grouped dropdown</label>
+            <div class="dropdown" data-testid="form-elements-dropdown-grouped">
+              <button type="button" class="dropdown__toggle" data-testid="form-elements-dropdown-grouped-toggle" aria-haspopup="true" aria-expanded="false">
+                <span data-testid="form-elements-dropdown-grouped-label">Choose a technology</span> ▾
+              </button>
+              <ul class="dropdown__menu" role="listbox" hidden data-testid="form-elements-dropdown-grouped-menu"></ul>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Cascading dropdown</label>
+            <div class="utility-bar">
+              <select data-testid="form-elements-cascading-country"><option value="">Country</option></select>
+              <select data-testid="form-elements-cascading-region" disabled><option value="">Region</option></select>
+              <select data-testid="form-elements-cascading-city" disabled><option value="">City</option></select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Multi-checkbox dropdown</label>
+            <div class="dropdown" data-testid="form-elements-dropdown-multicheckbox">
+              <button type="button" class="dropdown__toggle" data-testid="form-elements-dropdown-multicheckbox-toggle" aria-haspopup="true" aria-expanded="false">
+                <span data-testid="form-elements-dropdown-multicheckbox-label">Select skills</span> ▾
+              </button>
+              <div class="dropdown__menu" hidden data-testid="form-elements-dropdown-multicheckbox-menu"></div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Focus-gated dropdown</label>
+            <p class="form-hint">Enabled only after Full Name above has a value.</p>
+            <select disabled data-testid="form-elements-dropdown-focusgated">
+              <option value="">Fill in Full Name first</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Delayed dropdown</label>
+            <p class="form-hint">Options load asynchronously after a short delay.</p>
+            <select data-testid="form-elements-dropdown-delayed">
+              <option value="">Loading options...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 :: Data Tables -->
+    <section id="data-tables" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">02</span>
+        <h2 class="section-divider__title">Data Tables</h2>
+        <p class="section-divider__subtitle">Practice sorting, filtering, pagination and inline editing.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Users</h3>
+          <div class="utility-bar" style="margin-bottom:1rem;">
+            <input type="text" placeholder="Filter by name or email..." data-testid="data-tables-users-filter-input" style="flex:1; padding:0.5rem; border:1px solid var(--color-border); border-radius:6px;" />
+            <select data-testid="data-tables-users-role-select">
+              <option value="">All roles</option>
+              <option value="Admin">Admin</option>
+              <option value="Editor">Editor</option>
+              <option value="Viewer">Viewer</option>
+            </select>
+          </div>
+          <table class="data-table" data-testid="data-tables-users-table">
+            <thead>
+              <tr>
+                <th><button data-testid="data-tables-users-sort-id">ID</button></th>
+                <th><button data-testid="data-tables-users-sort-name">Name</button></th>
+                <th><button data-testid="data-tables-users-sort-email">Email</button></th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody data-testid="data-tables-users-body"></tbody>
+          </table>
+          <div class="utility-bar" style="margin-top:1rem; justify-content:space-between;">
+            <span data-testid="data-tables-users-page-info"></span>
+            <div class="utility-bar">
+              <button class="btn btn--secondary btn--sm" data-testid="data-tables-users-page-prev">Prev</button>
+              <button class="btn btn--secondary btn--sm" data-testid="data-tables-users-page-next">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Products (inline editable)</h3>
+          <table class="data-table" data-testid="data-tables-products-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody data-testid="data-tables-products-body"></tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Randomized Table</h3>
+          <button class="btn btn--secondary" data-testid="data-tables-random-regenerate-btn">Regenerate data</button>
+          <table class="data-table" style="margin-top:1rem;" data-testid="data-tables-random-table">
+            <thead>
+              <tr><th>ID</th><th>Label</th><th>Value</th></tr>
+            </thead>
+            <tbody data-testid="data-tables-random-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 :: Interactions -->
+    <section id="interactions" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">03</span>
+        <h2 class="section-divider__title">Interactions</h2>
+        <p class="section-divider__subtitle">Practice drag-and-drop, hover effects and context menus.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Drag & Drop Task Reordering</h3>
+          <ul role="list" data-testid="interactions-task-list" style="display:flex; flex-direction:column; gap:0.5rem;"></ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Hover Effects</h3>
+          <div class="utility-bar">
+            <span class="tooltip-wrapper">
+              <button class="btn btn--secondary" data-testid="interactions-hover-tooltip-trigger">Hover for tooltip</button>
+              <span class="tooltip-bubble" data-testid="interactions-hover-tooltip-bubble">Here's a helpful tip!</span>
+            </span>
+            <div class="product-card interactions-hover-scale-card" style="width:140px; padding:1rem; transition:transform 0.2s ease;" data-testid="interactions-hover-scale-card">
+              Hover to scale
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Context Menu</h3>
+          <div data-testid="interactions-context-menu-area" style="border:2px dashed var(--color-border); border-radius:8px; padding:3rem; text-align:center;">
+            Right-click inside this area
+          </div>
+          <div class="context-menu" hidden data-testid="interactions-context-menu">
+            <button data-testid="interactions-context-menu-copy">Copy</button>
+            <button data-testid="interactions-context-menu-rename">Rename</button>
+            <button data-testid="interactions-context-menu-delete">Delete</button>
+          </div>
+          <p class="form-hint" data-testid="interactions-context-menu-result"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 :: Shopping -->
+    <section id="shopping" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">04</span>
+        <h2 class="section-divider__title">Shopping</h2>
+        <p class="section-divider__subtitle">Practice a full e-commerce flow: browse, cart, coupons and checkout.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Products</h3>
+          <div class="utility-bar" style="margin-bottom:1rem;">
+            <select data-testid="shopping-category-filter">
+              <option value="">All categories</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Sport">Sport</option>
+              <option value="Classic">Classic</option>
+            </select>
+          </div>
+          <div class="card-grid" data-testid="shopping-product-grid"></div>
+        </div>
+
+        <div class="section-block" data-testid="shopping-cart-panel">
+          <h3>Cart</h3>
+          <div data-testid="shopping-cart-items"></div>
+          <div class="form-field" style="max-width:280px;">
+            <label for="shopping-coupon-input">Coupon code</label>
+            <div class="utility-bar">
+              <input type="text" id="shopping-coupon-input" data-testid="shopping-coupon-input" />
+              <button class="btn btn--secondary" data-testid="shopping-coupon-apply-btn">Apply</button>
+            </div>
+            <p class="form-hint" data-testid="shopping-coupon-message"></p>
+          </div>
+          <p>Subtotal: <span data-testid="shopping-cart-subtotal">£0.00</span></p>
+          <p>Discount: <span data-testid="shopping-cart-discount">£0.00</span></p>
+          <p><strong>Total: <span data-testid="shopping-cart-total">£0.00</span></strong></p>
+          <button class="btn" data-testid="shopping-checkout-btn">Proceed to Checkout</button>
+        </div>
+
+        <div class="section-block" data-testid="shopping-checkout-panel" hidden>
+          <h3>Checkout</h3>
+          <form data-testid="shopping-checkout-form">
+            <div class="form-field">
+              <label for="shopping-shipping-name">Full Name</label>
+              <input type="text" id="shopping-shipping-name" data-testid="shopping-shipping-input-name" />
+            </div>
+            <div class="form-field">
+              <label for="shopping-shipping-address">Address</label>
+              <input type="text" id="shopping-shipping-address" data-testid="shopping-shipping-input-address" />
+            </div>
+            <div class="form-field">
+              <label for="shopping-shipping-city">City</label>
+              <input type="text" id="shopping-shipping-city" data-testid="shopping-shipping-input-city" />
+            </div>
+            <div class="form-field">
+              <label for="shopping-shipping-pincode">Pincode</label>
+              <input type="text" id="shopping-shipping-pincode" data-testid="shopping-shipping-input-pincode" />
+            </div>
+            <div class="form-field">
+              <label for="shopping-shipping-phone">Phone</label>
+              <input type="tel" id="shopping-shipping-phone" data-testid="shopping-shipping-input-phone" />
+            </div>
+            <div class="form-field">
+              <label>Payment Method</label>
+              <div>
+                <label><input type="radio" name="shopping-payment" value="Card" data-testid="shopping-payment-card" /> Card</label>
+                <label style="margin-left:1rem;"><input type="radio" name="shopping-payment" value="UPI" data-testid="shopping-payment-upi" /> UPI</label>
+                <label style="margin-left:1rem;"><input type="radio" name="shopping-payment" value="COD" data-testid="shopping-payment-cod" /> Cash on Delivery</label>
+              </div>
+            </div>
+            <button type="submit" class="btn" data-testid="shopping-place-order-btn">Place Order</button>
+          </form>
+        </div>
+
+        <div class="section-block" data-testid="shopping-confirmation-panel" hidden>
+          <h3>Order Confirmed</h3>
+          <p>Order ID: <span data-testid="shopping-order-id"></span></p>
+          <p>Status: <span data-testid="shopping-order-status">Confirmed</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 :: Dynamic Content -->
+    <section id="dynamic-content" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">05</span>
+        <h2 class="section-divider__title">Dynamic Content</h2>
+        <p class="section-divider__subtitle">Practice waiting for content that loads, appears, disappears or updates over time.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Load on demand</h3>
+          <button class="btn" data-testid="dynamic-load-btn">Load content</button>
+          <div style="margin-top:1rem;">
+            <div class="spinner" data-testid="dynamic-load-spinner" hidden></div>
+            <p data-testid="dynamic-load-result" hidden>Content loaded successfully after a delay.</p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Appears automatically</h3>
+          <p class="form-hint">An element will appear here 3 seconds after page load.</p>
+          <p data-testid="dynamic-auto-appear" hidden>I appeared automatically!</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Disappears automatically</h3>
+          <p class="form-hint">This message will disappear 3 seconds after page load.</p>
+          <p data-testid="dynamic-auto-disappear">I will disappear soon.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Live counter</h3>
+          <p>Value: <span data-testid="dynamic-counter-value">0</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 :: Modals & Alerts -->
+    <section id="modals-alerts" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">06</span>
+        <h2 class="section-divider__title">Modals & Alerts</h2>
+        <p class="section-divider__subtitle">Practice standard modals, nested modals, confirmation dialogs and native browser dialogs.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block utility-bar">
+          <button class="btn" data-testid="modals-open-standard-btn">Open Modal</button>
+          <button class="btn btn--danger" data-testid="modals-open-confirm-btn">Delete Item</button>
+          <button class="btn btn--secondary" data-testid="modals-open-alert-btn">Trigger alert()</button>
+          <button class="btn btn--secondary" data-testid="modals-open-confirmdialog-btn">Trigger confirm()</button>
+          <button class="btn btn--secondary" data-testid="modals-open-prompt-btn">Trigger prompt()</button>
+          <span data-testid="modals-native-result" class="form-hint"></span>
+        </div>
+
+        <div class="modal-backdrop" hidden data-testid="modals-standard-backdrop">
+          <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modals-standard-title">
+            <div class="modal__header">
+              <h2 id="modals-standard-title">Standard Modal</h2>
+              <button class="modal__close" data-testid="modals-standard-close-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <p>This is a standard modal dialog. You can open a nested modal from here.</p>
+            <div class="modal__actions">
+              <button class="btn btn--secondary" data-testid="modals-open-nested-btn">Open Nested Modal</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-backdrop" hidden data-testid="modals-nested-backdrop">
+          <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modals-nested-title">
+            <div class="modal__header">
+              <h2 id="modals-nested-title">Nested Modal</h2>
+              <button class="modal__close" data-testid="modals-nested-close-btn" aria-label="Close nested modal">&times;</button>
+            </div>
+            <p>This modal sits on top of the standard modal.</p>
+            <div class="modal__actions">
+              <button class="btn" data-testid="modals-nested-ok-btn">OK</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-backdrop" hidden data-testid="modals-confirm-backdrop">
+          <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modals-confirm-title">
+            <div class="modal__header">
+              <h2 id="modals-confirm-title">Confirm Deletion</h2>
+            </div>
+            <p>Are you sure you want to delete this item? This cannot be undone.</p>
+            <div class="modal__actions">
+              <button class="btn btn--secondary" data-testid="modals-confirm-cancel-btn">Cancel</button>
+              <button class="btn btn--danger" data-testid="modals-confirm-delete-btn">Confirm</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="form-hint" role="status" data-testid="modals-confirm-result"></p>
+      </div>
+    </section>
+
+    <!-- 07 :: Tabs & Accordion -->
+    <section id="tabs-accordion" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">07</span>
+        <h2 class="section-divider__title">Tabs & Accordion</h2>
+        <p class="section-divider__subtitle">Practice tab panels and collapsible accordion sections.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Tabs</h3>
+          <div role="tablist" aria-label="Automation tools" class="tabs__list" data-testid="tabs-list">
+            <button role="tab" id="tab-playwright" aria-controls="panel-playwright" aria-selected="true" class="tabs__tab" data-testid="tabs-tab-playwright">Playwright</button>
+            <button role="tab" id="tab-selenium" aria-controls="panel-selenium" aria-selected="false" class="tabs__tab" tabindex="-1" data-testid="tabs-tab-selenium">Selenium</button>
+            <button role="tab" id="tab-cypress" aria-controls="panel-cypress" aria-selected="false" class="tabs__tab" tabindex="-1" data-testid="tabs-tab-cypress">Cypress</button>
+          </div>
+          <div role="tabpanel" id="panel-playwright" aria-labelledby="tab-playwright" class="tabs__panel" data-testid="tabs-panel-playwright">
+            Playwright supports Chromium, Firefox and WebKit with a single API.
+          </div>
+          <div role="tabpanel" id="panel-selenium" aria-labelledby="tab-selenium" class="tabs__panel" hidden data-testid="tabs-panel-selenium">
+            Selenium WebDriver is the long-standing W3C standard for browser automation.
+          </div>
+          <div role="tabpanel" id="panel-cypress" aria-labelledby="tab-cypress" class="tabs__panel" hidden data-testid="tabs-panel-cypress">
+            Cypress runs directly inside the browser alongside the application.
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Accordion (single-open)</h3>
+          <div data-testid="accordion-single">
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="true" aria-controls="acc-single-panel-1" data-testid="accordion-single-trigger-1">What is a locator?</button>
+              <div id="acc-single-panel-1" class="accordion__panel" data-testid="accordion-single-panel-1">A locator represents a way to find element(s) on the page at any moment.</div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-single-panel-2" data-testid="accordion-single-trigger-2">What is auto-waiting?</button>
+              <div id="acc-single-panel-2" class="accordion__panel" hidden data-testid="accordion-single-panel-2">Playwright waits for actionability checks before performing actions.</div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-single-panel-3" data-testid="accordion-single-trigger-3">What is a fixture?</button>
+              <div id="acc-single-panel-3" class="accordion__panel" hidden data-testid="accordion-single-panel-3">Fixtures establish the environment for each test, giving it everything it needs.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Accordion (multi-open)</h3>
+          <div data-testid="accordion-multi">
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-multi-panel-1" data-testid="accordion-multi-trigger-1">Section A</button>
+              <div id="acc-multi-panel-1" class="accordion__panel" hidden data-testid="accordion-multi-panel-1">Content for section A.</div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-multi-panel-2" data-testid="accordion-multi-trigger-2">Section B</button>
+              <div id="acc-multi-panel-2" class="accordion__panel" hidden data-testid="accordion-multi-panel-2">Content for section B.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 :: Frames & Windows -->
+    <section id="frames-windows" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">08</span>
+        <h2 class="section-divider__title">Frames & Windows</h2>
+        <p class="section-divider__subtitle">Practice interacting with iframes, new tabs and new windows.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Iframes</h3>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <iframe src="/frames/frame-content-a.html" title="Frame A" data-testid="frames-iframe-a" style="width:280px; height:160px; border:1px solid var(--color-border); border-radius:8px;"></iframe>
+            <iframe src="/frames/frame-content-b.html" title="Frame B" data-testid="frames-iframe-b" style="width:280px; height:160px; border:1px solid var(--color-border); border-radius:8px;"></iframe>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>New Tab / New Window</h3>
+          <div class="utility-bar">
+            <a class="btn btn--secondary" href="/index.html" target="_blank" rel="noopener" data-testid="frames-new-tab-link">Open in New Tab</a>
+            <button class="btn btn--secondary" data-testid="frames-new-window-btn">Open in New Window</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 :: Shadow DOM -->
+    <section id="shadow-dom" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">09</span>
+        <h2 class="section-divider__title">Shadow DOM</h2>
+        <p class="section-divider__subtitle">Practice piercing shadow roots to locate elements. Playwright's <code>page.locator()</code> pierces shadow DOM automatically.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Custom Counter Element</h3>
+          <custom-counter data-testid="shadow-counter"></custom-counter>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 :: Advanced Scenarios -->
+    <section id="advanced-scenarios" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">10</span>
+        <h2 class="section-divider__title">Advanced Scenarios</h2>
+        <p class="section-divider__subtitle">A grab-bag of tricky automation cases.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Moving Target</h3>
+          <div style="position:relative; height:120px; border:1px dashed var(--color-border); border-radius:8px;">
+            <button class="btn btn--sm" data-testid="advanced-moving-target-btn" style="position:absolute; left:0; top:40px;">Catch me</button>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Overlapping Element</h3>
+          <div style="position:relative; height:80px;">
+            <button class="btn" data-testid="advanced-overlapped-btn" style="position:absolute; left:0; top:0;">Click me</button>
+            <div data-testid="advanced-overlay" style="position:absolute; left:0; top:0; width:160px; height:44px; background:rgba(255,255,255,0.01); cursor:pointer;"></div>
+          </div>
+          <p class="form-hint" role="status" data-testid="advanced-overlapped-result"></p>
+        </div>
+
+        <div class="section-block">
+          <h3>Delayed-enable Button</h3>
+          <button class="btn" data-testid="advanced-delayed-enable-btn" disabled>Wait for it...</button>
+        </div>
+
+        <div class="section-block">
+          <h3>Lazy-loaded List</h3>
+          <div data-testid="advanced-lazy-list-container" style="height:200px; overflow-y:auto; border:1px solid var(--color-border); border-radius:8px; padding:0.5rem;">
+            <ul role="list" data-testid="advanced-lazy-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 :: Multi-Step Wizard -->
+    <section id="wizard" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">11</span>
+        <h2 class="section-divider__title">Multi-Step Wizard</h2>
+        <p class="section-divider__subtitle">Practice state that must be carried across multiple steps.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <div class="wizard__steps" data-testid="wizard-step-indicator">
+            <div class="wizard__step" data-testid="wizard-step-indicator-1" aria-current="true">1. Personal</div>
+            <div class="wizard__step" data-testid="wizard-step-indicator-2">2. Address</div>
+            <div class="wizard__step" data-testid="wizard-step-indicator-3">3. Payment</div>
+            <div class="wizard__step" data-testid="wizard-step-indicator-4">4. Review</div>
+          </div>
+
+          <div class="wizard__panel" data-testid="wizard-panel-1">
+            <div class="form-field">
+              <label for="wizard-fullname">Full Name</label>
+              <input type="text" id="wizard-fullname" data-testid="wizard-input-fullname" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-email">Email</label>
+              <input type="email" id="wizard-email" data-testid="wizard-input-email" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-phone">Phone</label>
+              <input type="tel" id="wizard-phone" data-testid="wizard-input-phone" />
+            </div>
+          </div>
+
+          <div class="wizard__panel" data-testid="wizard-panel-2" hidden>
+            <div class="form-field">
+              <label for="wizard-street">Street</label>
+              <input type="text" id="wizard-street" data-testid="wizard-input-street" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-city">City</label>
+              <input type="text" id="wizard-city" data-testid="wizard-input-city" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-state">State</label>
+              <input type="text" id="wizard-state" data-testid="wizard-input-state" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-zip">Zip</label>
+              <input type="text" id="wizard-zip" data-testid="wizard-input-zip" />
+            </div>
+          </div>
+
+          <div class="wizard__panel" data-testid="wizard-panel-3" hidden>
+            <div class="form-field">
+              <label for="wizard-card-number">Card Number</label>
+              <input type="text" id="wizard-card-number" data-testid="wizard-input-cardnumber" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-expiry">Expiry</label>
+              <input type="text" id="wizard-expiry" placeholder="MM/YY" data-testid="wizard-input-expiry" />
+            </div>
+            <div class="form-field">
+              <label for="wizard-cvv">CVV</label>
+              <input type="text" id="wizard-cvv" data-testid="wizard-input-cvv" />
+            </div>
+          </div>
+
+          <div class="wizard__panel" data-testid="wizard-panel-4" hidden>
+            <h3>Review</h3>
+            <dl data-testid="wizard-review-summary"></dl>
+          </div>
+
+          <div class="modal__actions">
+            <button class="btn btn--secondary" data-testid="wizard-back-btn" disabled>Back</button>
+            <button class="btn" data-testid="wizard-next-btn">Next</button>
+            <button class="btn" data-testid="wizard-submit-btn" hidden>Submit</button>
+          </div>
+          <p class="form-hint" role="status" data-testid="wizard-submit-result" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 :: Carousel -->
+    <section id="carousel" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">12</span>
+        <h2 class="section-divider__title">Carousel</h2>
+        <p class="section-divider__subtitle">Practice slide navigation, dot indicators and autoplay toggling.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <div class="carousel" data-testid="carousel-root">
+            <div class="carousel__track" data-testid="carousel-track"></div>
+            <button class="carousel__arrow carousel__arrow--prev" data-testid="carousel-prev-btn" aria-label="Previous slide">&#8249;</button>
+            <button class="carousel__arrow carousel__arrow--next" data-testid="carousel-next-btn" aria-label="Next slide">&#8250;</button>
+          </div>
+          <div class="carousel__dots" data-testid="carousel-dots"></div>
+          <div class="utility-bar" style="margin-top:1rem;">
+            <label>
+              <input type="checkbox" data-testid="carousel-autoplay-toggle" /> Autoplay
+            </label>
+            <span data-testid="carousel-current-index">Slide 1 of 4</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 :: Network & API -->
+    <section id="network-api" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">13</span>
+        <h2 class="section-divider__title">Network & API</h2>
+        <p class="section-divider__subtitle">Practice waiting on real network requests and intercepting them with <code>page.route()</code>.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Fetch Users</h3>
+          <button class="btn" data-testid="network-fetch-users-btn">Fetch Users</button>
+          <div class="spinner" data-testid="network-fetch-users-loading" hidden style="margin-top:1rem;"></div>
+          <p class="form-error" data-testid="network-fetch-users-error" hidden></p>
+          <ul role="list" data-testid="network-users-list" style="margin-top:1rem;"></ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Create Post</h3>
+          <form data-testid="network-create-post-form">
+            <div class="form-field">
+              <label for="network-post-title">Title</label>
+              <input type="text" id="network-post-title" data-testid="network-post-input-title" />
+            </div>
+            <div class="form-field">
+              <label for="network-post-body">Body</label>
+              <textarea id="network-post-body" data-testid="network-post-input-body"></textarea>
+            </div>
+            <button type="submit" class="btn" data-testid="network-post-submit-btn">Create Post</button>
+          </form>
+          <div class="spinner" data-testid="network-post-loading" hidden style="margin-top:1rem;"></div>
+          <pre data-testid="network-post-result" style="margin-top:1rem; background:var(--color-bg); padding:1rem; border-radius:6px; white-space:pre-wrap;" hidden></pre>
+          <p class="form-error" data-testid="network-post-error" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 :: Flaky & Retry -->
+    <section id="flaky-retry" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">14</span>
+        <h2 class="section-divider__title">Flaky & Retry Elements</h2>
+        <p class="section-divider__subtitle">Practice Playwright's auto-waiting and retrying assertions against intentionally unreliable elements.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Probabilistic Success Button</h3>
+          <p class="form-hint">Succeeds roughly 1 in 3 clicks.</p>
+          <button class="btn" data-testid="flaky-probabilistic-btn">Click me</button>
+          <p role="status" data-testid="flaky-probabilistic-result"></p>
+        </div>
+
+        <div class="section-block">
+          <h3>Delayed-enable Button</h3>
+          <p class="form-hint">Becomes clickable after a random delay following page load.</p>
+          <button class="btn" data-testid="flaky-delayed-enable-btn" disabled>Not ready yet</button>
+        </div>
+
+        <div class="section-block">
+          <h3>Flipping State</h3>
+          <p class="form-hint">This value flips between two states on an interval - assert with a polling/retrying check.</p>
+          <p data-testid="flaky-flip-state">A</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 :: Custom Date Picker -->
+    <section id="date-picker" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">15</span>
+        <h2 class="section-divider__title">Custom Date Picker</h2>
+        <p class="section-divider__subtitle">A non-native calendar widget with month navigation.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <div class="datepicker" data-testid="datepicker-root">
+            <input type="text" readonly placeholder="Select a date" data-testid="datepicker-input" />
+            <div class="datepicker__panel" hidden data-testid="datepicker-panel">
+              <div class="datepicker__nav">
+                <button type="button" data-testid="datepicker-prev-month-btn" aria-label="Previous month">&#8249;</button>
+                <span data-testid="datepicker-month-label"></span>
+                <button type="button" data-testid="datepicker-next-month-btn" aria-label="Next month">&#8250;</button>
+              </div>
+              <div class="datepicker__grid" data-testid="datepicker-grid"></div>
+              <div class="datepicker__footer">
+                <button type="button" class="btn btn--secondary btn--sm" data-testid="datepicker-today-btn">Today</button>
+                <button type="button" class="btn btn--secondary btn--sm" data-testid="datepicker-clear-btn">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 :: Media Player -->
+    <section id="media-player" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">16</span>
+        <h2 class="section-divider__title">Media Player</h2>
+        <p class="section-divider__subtitle">Practice custom controls for video and audio playback.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <h3>Video</h3>
+          <video data-testid="media-video" width="480" preload="metadata" style="background:#000; width:100%; max-width:480px;">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+          </video>
+          <div class="utility-bar" style="margin-top:0.75rem;">
+            <button class="btn btn--sm" data-testid="media-video-play-btn">Play</button>
+            <button class="btn btn--secondary btn--sm" data-testid="media-video-pause-btn">Pause</button>
+            <button class="btn btn--secondary btn--sm" data-testid="media-video-mute-btn">Mute</button>
+            <input type="range" min="0" max="100" value="100" data-testid="media-video-volume" />
+            <span data-testid="media-video-time">0:00 / 0:00</span>
+          </div>
+          <input type="range" min="0" max="100" value="0" data-testid="media-video-seek" style="width:100%; margin-top:0.5rem;" />
+        </div>
+
+        <div class="section-block">
+          <h3>Audio</h3>
+          <audio data-testid="media-audio" preload="metadata">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg" />
+          </audio>
+          <div class="utility-bar" style="margin-top:0.75rem;">
+            <button class="btn btn--sm" data-testid="media-audio-play-btn">Play</button>
+            <button class="btn btn--secondary btn--sm" data-testid="media-audio-pause-btn">Pause</button>
+            <span data-testid="media-audio-time">0:00 / 0:00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 :: Accessibility -->
+    <section id="accessibility" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">17</span>
+        <h2 class="section-divider__title">Accessibility (a11y)</h2>
+        <p class="section-divider__subtitle">Landmarks, labeled forms, focus traps, keyboard navigation and live regions.</p>
+      </div>
+      <div class="section-content" style="display:flex; gap:1.5rem;">
+        <aside aria-label="Sidebar" data-testid="a11y-sidebar" style="width:200px;">
+          <h3 style="font-size:1rem;">On this page</h3>
+          <nav aria-label="Accessibility section links">
+            <ul role="list" style="display:flex; flex-direction:column; gap:0.4rem;">
+              <li><a href="#a11y-form-section" data-testid="a11y-toc-form">Labeled form</a></li>
+              <li><a href="#a11y-focus-trap-section" data-testid="a11y-toc-focus-trap">Focus trap</a></li>
+              <li><a href="#a11y-keyboard-section" data-testid="a11y-toc-keyboard">Keyboard menu</a></li>
+              <li><a href="#a11y-live-region-section" data-testid="a11y-toc-live">Live region</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <div style="flex:1;">
+          <div class="section-block" id="a11y-form-section">
+            <h3>Fully Labeled Form</h3>
+            <form data-testid="a11y-form" novalidate>
+              <div class="form-field">
+                <label for="a11y-name">Name</label>
+                <input type="text" id="a11y-name" data-testid="a11y-input-name" aria-describedby="a11y-name-hint" />
+                <p id="a11y-name-hint" class="form-hint">As it appears on official documents.</p>
+              </div>
+              <div class="form-field field-error">
+                <label for="a11y-email">Email</label>
+                <input type="email" id="a11y-email" data-testid="a11y-input-email" aria-invalid="true" aria-describedby="a11y-email-error" />
+                <p id="a11y-email-error" class="form-error" role="alert" data-testid="a11y-email-error">Please enter a valid email address.</p>
+              </div>
+            </form>
+          </div>
+
+          <div class="section-block" id="a11y-focus-trap-section">
+            <h3>Focus Trap Modal</h3>
+            <button class="btn" data-testid="a11y-open-modal-btn">Open accessible modal</button>
+            <div class="modal-backdrop" hidden data-testid="a11y-modal-backdrop">
+              <div class="modal" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" data-testid="a11y-modal">
+                <div class="modal__header">
+                  <h2 id="a11y-modal-title">Accessible Modal</h2>
+                  <button class="modal__close" data-testid="a11y-modal-close-btn" aria-label="Close modal">&times;</button>
+                </div>
+                <p>Tab and Shift+Tab cycle only within this modal.</p>
+                <div class="modal__actions">
+                  <button class="btn btn--secondary" data-testid="a11y-modal-secondary-btn">Secondary</button>
+                  <button class="btn" data-testid="a11y-modal-primary-btn">Primary</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block" id="a11y-keyboard-section">
+            <h3>Keyboard-only Menu</h3>
+            <p class="form-hint">Use Arrow Up/Down to move between items, Escape to close.</p>
+            <ul role="menu" aria-label="Keyboard menu" data-testid="a11y-keyboard-menu" style="display:flex; flex-direction:column; gap:0.25rem; max-width:200px;">
+              <li role="none"><button role="menuitem" data-testid="a11y-keyboard-menu-item-1">Item 1</button></li>
+              <li role="none"><button role="menuitem" data-testid="a11y-keyboard-menu-item-2">Item 2</button></li>
+              <li role="none"><button role="menuitem" data-testid="a11y-keyboard-menu-item-3">Item 3</button></li>
+            </ul>
+          </div>
+
+          <div class="section-block" id="a11y-live-region-section">
+            <h3>Live Region</h3>
+            <button class="btn btn--secondary" data-testid="a11y-announce-btn">Trigger announcement</button>
+            <p aria-live="polite" role="status" data-testid="a11y-live-region"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 :: Responsive Testing -->
+    <section id="responsive" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">18</span>
+        <h2 class="section-divider__title">Responsive Testing</h2>
+        <p class="section-divider__subtitle">A layout that reflows at 480px and 768px, with an on-page breakpoint indicator you can assert against directly.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block">
+          <p>
+            Current breakpoint: <strong data-testid="responsive-breakpoint-label">desktop</strong>
+            (<span data-testid="responsive-viewport-width">0</span>px wide)
+          </p>
+        </div>
+
+        <div class="section-block">
+          <div class="responsive-demo__grid" data-testid="responsive-grid">
+            <div class="product-card" style="padding:1rem;">Card 1</div>
+            <div class="product-card" style="padding:1rem;">Card 2</div>
+            <div class="product-card" style="padding:1rem;">Card 3</div>
+            <div class="product-card" style="padding:1rem;">Card 4</div>
+            <div class="product-card" style="padding:1rem;">Card 5</div>
+            <div class="product-card" style="padding:1rem;">Card 6</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 :: Protected Content -->
+    <section id="protected-content" class="page-section">
+      <div class="section-divider">
+        <span class="section-divider__index">19</span>
+        <h2 class="section-divider__title">Protected Content</h2>
+        <p class="section-divider__subtitle">This section is gated behind a mock login, and hosts toast and progress-indicator demos.</p>
+      </div>
+      <div class="section-content">
+        <div class="section-block" data-testid="protected-gate-message">
+          <p>You must be logged in to view this content.</p>
+          <a class="btn" href="/login.html?redirect=/index.html%23protected-content" data-testid="protected-login-link">Go to Login</a>
+        </div>
+
+        <div data-testid="protected-content-area" hidden>
+          <div class="section-block">
+            <h3>Welcome back!</h3>
+            <p>You are viewing content that only logged-in users can see.</p>
+            <button class="btn btn--secondary" data-testid="protected-logout-btn">Logout</button>
+          </div>
+
+          <div class="section-block">
+            <h3>Toast Notifications</h3>
+            <div class="utility-bar">
+              <button class="btn btn--secondary btn--sm" data-testid="protected-toast-success-btn">Success</button>
+              <button class="btn btn--secondary btn--sm" data-testid="protected-toast-error-btn">Error</button>
+              <button class="btn btn--secondary btn--sm" data-testid="protected-toast-warning-btn">Warning</button>
+              <button class="btn btn--secondary btn--sm" data-testid="protected-toast-info-btn">Info</button>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3>Progress Indicators</h3>
+            <div class="form-field">
+              <label>Download progress</label>
+              <button class="btn btn--secondary btn--sm" data-testid="protected-download-start-btn">Start download</button>
+              <div class="progress-bar" style="margin-top:0.5rem;">
+                <div class="progress-bar__fill" data-testid="protected-download-progress"></div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Spinner</label>
+              <button class="btn btn--secondary btn--sm" data-testid="protected-spinner-toggle-btn">Toggle spinner</button>
+              <div class="spinner" style="margin-top:0.5rem;" data-testid="protected-spinner" hidden></div>
+            </div>
+            <div class="form-field">
+              <label>Skeleton loading</label>
+              <button class="btn btn--secondary btn--sm" data-testid="protected-skeleton-toggle-btn">Toggle skeleton</button>
+              <div data-testid="protected-skeleton-content" style="margin-top:0.5rem;">
+                <div class="skeleton" style="width:80%; margin-bottom:0.5rem;" data-testid="protected-skeleton-line-1"></div>
+                <div class="skeleton" style="width:60%;" data-testid="protected-skeleton-line-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script type="module" src="/js/layout.js"></script>
+  <script type="module" src="/js/hash-scroll.js"></script>
+  <script type="module" src="/js/pages/home.js"></script>
+  <script type="module" src="/js/pages/form-elements.js"></script>
+  <script type="module" src="/js/pages/data-tables.js"></script>
+  <script type="module" src="/js/pages/interactions.js"></script>
+  <script type="module" src="/js/pages/shopping.js"></script>
+  <script type="module" src="/js/pages/dynamic-content.js"></script>
+  <script type="module" src="/js/pages/modals-alerts.js"></script>
+  <script type="module" src="/js/pages/tabs-accordion.js"></script>
+  <script type="module" src="/js/pages/frames-windows.js"></script>
+  <script type="module" src="/js/pages/shadow-dom.js"></script>
+  <script type="module" src="/js/pages/advanced-scenarios.js"></script>
+  <script type="module" src="/js/pages/wizard.js"></script>
+  <script type="module" src="/js/pages/carousel.js"></script>
+  <script type="module" src="/js/pages/network-api.js"></script>
+  <script type="module" src="/js/pages/flaky-retry.js"></script>
+  <script type="module" src="/js/pages/date-picker.js"></script>
+  <script type="module" src="/js/pages/media-player.js"></script>
+  <script type="module" src="/js/pages/accessibility.js"></script>
+  <script type="module" src="/js/pages/responsive.js"></script>
+  <script type="module" src="/js/pages/protected-content.js"></script>
+</body>
+</html>

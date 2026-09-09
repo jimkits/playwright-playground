@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Frame B</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; background: #fef3c7; }
+    input, button { padding: 0.5rem; }
+  </style>
+</head>
+<body>
+  <p>This is Frame B.</p>
+  <input type="text" placeholder="Type here" data-testid="frame-b-input" />
+  <p data-testid="frame-b-echo"></p>
+  <script>
+    const input = document.querySelector('[data-testid="frame-b-input"]');
+    const echo = document.querySelector('[data-testid="frame-b-echo"]');
+    input.addEventListener("input", () => {
+      echo.textContent = `You typed: ${input.value}`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Frame A</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; background: #eef2ff; }
+    button { padding: 0.5rem 1rem; }
+  </style>
+</head>
+<body>
+  <p>This is Frame A.</p>
+  <button data-testid="frame-a-btn">Click inside Frame A</button>
+  <p data-testid="frame-a-result"></p>
+  <script>
+    document.querySelector('[data-testid="frame-a-btn"]').addEventListener("click", () => {
+      document.querySelector('[data-testid="frame-a-result"]').textContent = "Clicked inside Frame A!";
+    });
+  </script>
+</body>
+</html>

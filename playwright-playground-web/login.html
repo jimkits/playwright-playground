@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayLab Training - Login</title>
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content" data-testid="a11y-skip-link">Skip to main content</a>
+  <div id="app-header"></div>
+
+  <main id="main-content" class="page-main">
+    <div class="page-header">
+      <h1>Login</h1>
+      <p>Use <code>admin</code> / <code>admin123</code> to unlock the Protected Content section.</p>
+    </div>
+
+    <div class="section-block" style="max-width: 380px;">
+      <form data-testid="login-form" novalidate>
+        <div class="form-field">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" data-testid="login-input-username" autocomplete="username" />
+        </div>
+        <div class="form-field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" data-testid="login-input-password" autocomplete="current-password" />
+        </div>
+        <p class="form-error" role="alert" data-testid="login-error-message" hidden>Invalid username or password.</p>
+        <button type="submit" class="btn" data-testid="login-submit-btn">Log in</button>
+      </form>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script type="module" src="/js/layout.js"></script>
+  <script type="module" src="/js/pages/login.js"></script>
+</body>
+</html>

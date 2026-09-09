@@ -1,0 +1,54 @@
+/* Breakpoints: mobile <=480px, tablet 481-768px, desktop >768px */
+
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 0.75rem;
+  }
+
+  .section-grid,
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0 1rem;
+  }
+
+  .site-nav__link span.label-full {
+    display: none;
+  }
+
+  .page-main {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .section-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    width: 92vw;
+  }
+}
+
+/* Responsive Testing page layout */
+.responsive-demo__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .responsive-demo__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-demo__grid {
+    grid-template-columns: 1fr;
+  }
+}
