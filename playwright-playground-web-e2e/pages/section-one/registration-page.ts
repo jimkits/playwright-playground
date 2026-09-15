@@ -1,8 +1,8 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { GetDateYearsAgo } from "../utils/date";
-import { SectionOneData } from "../test-data/test-data";
+import { GetDateYearsAgo } from "../../utils/date";
+import { SectionOneData } from "../../test-data/test-data";
 
-export class SectionOne{
+export class RegistrationPage{
     private readonly page: Page;
     private readonly fullName: Locator;
     private readonly email: Locator;

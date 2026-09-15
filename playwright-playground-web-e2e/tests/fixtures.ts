@@ -1,7 +1,7 @@
 import {test as base} from '@playwright/test';
 import { Heading } from "../pages/heading-page";
 import { Navigation } from '../pages/navigation-page';
-import { SectionOne } from '../pages/section-one-page';
+import { SectionOne } from '../pages/section-one/section-one-page';
 
 type PageObjects = {
     heading: Heading;
