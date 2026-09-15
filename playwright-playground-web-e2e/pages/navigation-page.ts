@@ -6,7 +6,7 @@ export class Navigation{
 
     constructor(page:Page){
         this.page = page;
-        this.sectionOne = page.getByTestId('home-section-card-form-elements');
+        this.sectionOne = page.getByRole('link', {name: 'Form Elements'});
     }
 
     async goToSectionOne(){

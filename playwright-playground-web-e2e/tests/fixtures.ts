@@ -35,5 +35,5 @@ export const test = base
     sectionOne: async ({page}, use) => {
         const sectionOne = new SectionOne(page);
         await use(sectionOne);
-    }
-})
+    },
+});

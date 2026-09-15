@@ -1,5 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { GetDateYearsAgo } from "../utils/date";
+import { SectionOneData } from "../test-data/test-data";
 
 export class SectionOne{
     private readonly page: Page;
@@ -18,17 +19,21 @@ export class SectionOne{
 
     constructor(page: Page){
         this.page = page;
-        this.fullName = page.getByTestId('form-elements-input-fullname');
-        this.email = page.getByTestId('form-elements-input-email');
-        this.password = page.getByTestId('form-elements-input-password');
-        this.phone = page.getByTestId('form-elements-input-phone');
-        this.dob = page.getByTestId('form-elements-input-dob');
-        this.country = page.getByTestId('form-elements-select-country');
-        this.gender = page.getByTestId('form-elements-radio-gender-group');
-        this.skills = page.getByTestId('form-elements-checkbox-skills-group');
-        this.bio = page.getByTestId('form-elements-textarea-bio');
-        this.submit = page.getByTestId('form-elements-submit-btn');
-        this.reset = page.getByTestId('form-elements-reset-btn');
+        const sectionId = page.locator('#form-elements');
+
+        this.fullName = sectionId.getByRole('textbox', {name: 'Full Name'});
+        this.email = sectionId.getByRole('textbox', {name: 'Email'});
+        this.password = sectionId.getByRole('textbox', {name: 'Password'});
+        this.phone = sectionId.getByRole('textbox', {name: 'Phone'});
+        this.dob = sectionId.getByRole('textbox', {name: 'Date of Birth'});
+        this.country = sectionId.getByRole('combobox', {name: 'Country'});
+        // the browser object implementation does not wrap the options in a radio list
+        this.gender = sectionId.getByTestId('form-elements-radio-gender-group');
+        // the browser object implementation does not wrap the options in a checkbox list
+        this.skills = sectionId.getByTestId('form-elements-checkbox-skills-group');
+        this.bio = sectionId.getByRole('textbox', {name:'Bio'});
+        this.submit = sectionId.getByRole('button', {name: 'Submit'});
+        this.reset = sectionId.getByRole('button', {name:'Reset'});
         this.submitResult = page.getByTestId('form-elements-submit-result');
     }
 
@@ -37,7 +42,7 @@ export class SectionOne{
     }
 
     async assertFullName(text:string){
-        await expect(this.fullName).toHaveText(text);
+        await expect(this.fullName).toHaveValue(text);
     }
 
     async setEmail(text:string){
@@ -45,7 +50,7 @@ export class SectionOne{
     }
 
     async assertEmail(text:string){
-        await expect(this.email).toHaveText(text);
+        await expect(this.email).toHaveValue(text);
     }
 
     async setPassword(text:string){
@@ -53,7 +58,7 @@ export class SectionOne{
     }
 
     async assertPassword(text:string){
-        await expect(this.password).toHaveText(text);
+        await expect(this.password).toHaveValue(text);
     }
 
     async setPhone(text:string){
@@ -61,7 +66,7 @@ export class SectionOne{
     }
 
     async assertPhone(text:string){
-        await expect(this.phone).toHaveText(text);
+        await expect(this.phone).toHaveValue(text);
     }
 
     async setDateOfBirth(text:string){
@@ -69,7 +74,7 @@ export class SectionOne{
     }
 
     async assertDateOfBirth(text:string){
-        await expect(this.dob).toHaveText(text)
+        await expect(this.dob).toHaveValue(text)
     }
 
     async selectCountry(text:string){
@@ -81,28 +86,34 @@ export class SectionOne{
     }
 
     async selectGender(text:string){
-        await this.gender.getByRole('radio', {name: text}).first().check();
+        await this.gender.getByRole('radio', {name: text, exact: true}).check();
     }
 
-    async assertGenderToHaveNoSelection(){
+    async assertGender(option: string){
         const genderList = await this.gender.getByRole('radio').all()
 
         for(const gen of genderList){
-            await expect(gen).not.toBeChecked();
+            if (option != '' && await gen.inputValue() === option)
+                await expect(gen).toBeChecked() 
+            else
+                await expect(gen).not.toBeChecked();
         }
     }
 
     async selectSkills(text:Array<string>){
         for (const t of text){
-            await this.skills.getByLabel(t).first().click();
+            await this.skills.getByLabel(t, {exact: true}).check();
         };
     }
 
-    async assertSkillsToBeUnselected(){
+    async assertSkills(options: string[]){
         const skillList = await this.skills.getByRole('checkbox').all()
 
         for (const s of skillList){
-            await expect(s).not.toBeChecked();
+            if (options.includes(await s.inputValue()))
+                await expect(s).toBeChecked();
+            else
+                await expect(s).not.toBeChecked();
         };
     }
 
@@ -111,7 +122,7 @@ export class SectionOne{
     }
 
     async assertBio(text:string){
-        await expect(this.bio).toHaveText(text);
+        await expect(this.bio).toHaveValue(text);
     }
 
     async submitForm(){
@@ -127,16 +138,28 @@ export class SectionOne{
         await expect(this.submitResult).toContainText('successfully');
     }
 
-    async fillInFormWithCorrectValues(){
-        await this.setFullName('John Smith');
-        await this.setEmail('john.smith@test.com');
-        await this.setPassword('password123');
-        await this.setPhone('0712345678');
+    async fillInFormWithCorrectValues(data: typeof SectionOneData){
+        await this.setFullName(data.fullName);
+        await this.setEmail(data.email);
+        await this.setPassword(data.password);
+        await this.setPhone(data.phone);
         await this.setDateOfBirth(GetDateYearsAgo(30));
-        await this.selectCountry('United Kingdom');
-        await this.selectGender('Male');
-        await this.selectSkills(['TypeScript','CI/CD']);
-        await this.setBio('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+        await this.selectCountry(data.country);
+        await this.selectGender(data.gender);
+        await this.selectSkills(data.skills);
+        await this.setBio(data.bio);
+    }
+
+    async assertFormValuesAreCorrect(data: typeof SectionOneData){
+        await this.assertFullName(data.fullName);
+        await this.assertEmail(data.email);
+        await this.assertPassword(data.password);
+        await this.assertPhone(data.phone);
+        await this.assertDateOfBirth(GetDateYearsAgo(30));
+        await this.assertCountry(data.country);
+        await this.assertGender(data.gender);
+        await this.assertSkills(data.skills);
+        await this.assertBio(data.bio);
     }
 
     async assertFormHasIsClean(){
@@ -146,8 +169,8 @@ export class SectionOne{
         await this.assertPhone('');
         await this.assertDateOfBirth('');
         await this.assertCountry('');
-        await this.assertGenderToHaveNoSelection();
-        await this.assertSkillsToBeUnselected();
+        await this.assertGender('');
+        await this.assertSkills([]);
         await this.assertBio('');
     }
 }
