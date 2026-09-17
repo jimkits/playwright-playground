@@ -1,5 +1,6 @@
 import { test } from './fixtures';
 import { SectionOneData } from '../test-data/test-data';
+import { SectionOne } from '../pages/section-one/section-one-page';
 
 test.beforeEach(async ({navigation}) => {
         await navigation.goToSectionOne();
@@ -101,4 +102,22 @@ test.describe('Section 1 - auto suggested search', {
         // Assert
         await search.assertSuggestions([]);
     });
+});
+
+test.describe('Section 1 - Multi select textfield', {
+    tag: ['@local','@production','@sectionone'],
+}, () => {
+    test('Select multiple values from the field', async ({sectionOne}) => {
+        // Arrange
+        const multiSelect = sectionOne.multiSelect;
+        const expectedOptions = ['Playwright','Selenium'];
+        const unselectedOptions = ['Cypress'];
+
+        // Act
+        await multiSelect.selectOptions(expectedOptions);
+
+        // Assert
+        await multiSelect.assertSelections(expectedOptions);
+        await multiSelect.assertSelectionsAreNotSelected(unselectedOptions);
+    })
 });
