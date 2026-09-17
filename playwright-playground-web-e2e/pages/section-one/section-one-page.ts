@@ -2,21 +2,24 @@ import { Page } from "@playwright/test";
 import { RegistrationPage } from "./registration-page";
 import { SliderAndColourPage } from "./slider-colour-page";
 import { FileUploadPage } from "./file-upload-page";
-import { AutoSuggestSearch } from "./auto-suggest-search";
-import { MultiSelect } from "./multi-select";
+import { AutoSuggestSearchPage } from "./auto-suggest-search-page";
+import { MultiSelectPage } from "./multi-select-page";
+import { DropDownPage } from "./dropdown-page";
 
-export class SectionOne{
+export class SectionOnePage{
     public readonly registration: RegistrationPage;
     public readonly sliderAndColour: SliderAndColourPage;
     public readonly fileUpload: FileUploadPage;
-    public readonly search: AutoSuggestSearch;
-    public readonly multiSelect: MultiSelect;
+    public readonly search: AutoSuggestSearchPage;
+    public readonly multiSelect: MultiSelectPage;
+    public readonly dropdown: DropDownPage;
 
     constructor(page: Page){
         this.registration = new RegistrationPage(page);
         this.sliderAndColour = new SliderAndColourPage(page);
         this.fileUpload = new FileUploadPage(page);
-        this.search = new AutoSuggestSearch(page);
-        this.multiSelect = new MultiSelect(page);
+        this.search = new AutoSuggestSearchPage(page);
+        this.multiSelect = new MultiSelectPage(page);
+        this.dropdown = new DropDownPage(page);
     }
 }

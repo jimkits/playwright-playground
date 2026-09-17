@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 
-export class AutoSuggestSearch{
+export class AutoSuggestSearchPage{
     private readonly search: Locator;
     private readonly suggestions: Locator;
 

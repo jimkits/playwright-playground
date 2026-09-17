@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 
-export class MultiSelect{
+export class MultiSelectPage{
     private readonly multiSelect: Locator;
 
     constructor(page: Page){

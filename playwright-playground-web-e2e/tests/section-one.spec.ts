@@ -1,6 +1,6 @@
 import { test } from './fixtures';
 import { SectionOneData } from '../test-data/test-data';
-import { SectionOne } from '../pages/section-one/section-one-page';
+import { SectionOnePage } from '../pages/section-one/section-one-page';
 
 test.beforeEach(async ({navigation}) => {
         await navigation.goToSectionOne();
@@ -120,4 +120,20 @@ test.describe('Section 1 - Multi select textfield', {
         await multiSelect.assertSelections(expectedOptions);
         await multiSelect.assertSelectionsAreNotSelected(unselectedOptions);
     })
+});
+
+test.describe('Section 1 - Dropdown fields', {
+    tag:['@local','@production','@sectionone'],
+}, () => {
+    test('Select custom dropdown value', async ({sectionOne}) => {
+        // Arrange
+        const dropdown = sectionOne.dropdown;
+        const selection = 'Playwright';
+
+        // Act
+        await dropdown.selectCustomDropDownOption(selection);
+
+        // Assert
+        await dropdown.assertCustomDropDownSelection(selection);
+    });
 });

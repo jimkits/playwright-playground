@@ -1,12 +1,12 @@
 import {test as base} from '@playwright/test';
 import { Heading } from "../pages/heading-page";
 import { Navigation } from '../pages/navigation-page';
-import { SectionOne } from '../pages/section-one/section-one-page';
+import { SectionOnePage } from '../pages/section-one/section-one-page';
 
 type PageObjects = {
     heading: Heading;
     navigation: Navigation;
-    sectionOne: SectionOne;
+    sectionOne: SectionOnePage;
 };
 
 export const test = base
@@ -33,7 +33,7 @@ export const test = base
         await use(navigation);
     },
     sectionOne: async ({page}, use) => {
-        const sectionOne = new SectionOne(page);
+        const sectionOne = new SectionOnePage(page);
         await use(sectionOne);
     },
 });
