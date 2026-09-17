@@ -1,7 +1,7 @@
 import { test } from './fixtures';
 import { SectionOneData } from '../test-data/test-data';
 
-test.describe('Fill section 1 registration form', {
+test.describe('Section 1 - registration form', {
     tag: ['@local','@production', '@sectionone']
 }, () => {
     test('Fill registration form and submit', async ({navigation, sectionOne}) => {
@@ -37,7 +37,7 @@ test.describe('Fill section 1 registration form', {
     });
 });
 
-test.describe('Fill section 1 sliders and colour', {
+test.describe('Section 1 - sliders and colour', {
     tag: ['@local', '@production', '@sectionone']
 }, () => {
     test('Fill sliders and colour', async ({navigation, sectionOne}) => {
@@ -58,7 +58,7 @@ test.describe('Fill section 1 sliders and colour', {
     });
 });
 
-test.describe('Fill section 1 file upload', {
+test.describe('Section 1 - file upload', {
     tag: ['@local', '@production', '@sectionone']
 }, () => {
     test('Select file to upload', async ({navigation, sectionOne}) => {
@@ -74,5 +74,35 @@ test.describe('Fill section 1 file upload', {
         // Assert
         await fileUpload.waitForUploadBarToFill();
         await fileUpload.assertCorrectFileUploaded(fileName);
+    });
+});
+
+test.describe('Section 1 - auto suggested search', {
+    tag: ['@local','@production','@sectionone']
+}, () => {
+    test('Search part of text and expect correct suggestions', async ({navigation, sectionOne}) => {
+        // Arrange
+        const search = sectionOne.search;
+
+        // Act
+        await navigation.goToSectionOne();
+
+        await search.searchForText('te');
+
+        // Assert
+        await search.assertSuggestions(['Locator strategies','Network interception','Component testing']);
+    });
+
+    test('Search text that gives no suggestion', async ({navigation, sectionOne}) => {
+        // Arrange
+        const search = sectionOne.search;
+
+        // Act
+        await navigation.goToSectionOne();
+
+        await search.searchForText('There should be no text like this');
+
+        // Assert
+        await search.assertSuggestions([]);
     });
 });

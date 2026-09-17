@@ -1,7 +1,6 @@
 import { expect, Locator, Page } from "@playwright/test";
 
 export class SliderAndColourPage{
-    private readonly page: Page;
     private readonly volume: Locator;
     private readonly priceRangeMin: Locator;
     private readonly priceRangeMax: Locator;
@@ -9,7 +8,6 @@ export class SliderAndColourPage{
     private readonly favouriteColour: Locator;
 
     constructor(page: Page){
-        this.page = page;
         const sectionId = page.locator('#form-elements');
 
         this.volume = sectionId.getByRole('slider', {name:'Volume'});

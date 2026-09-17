@@ -3,7 +3,6 @@ import { GetDateYearsAgo } from "../../utils/date";
 import { SectionOneData } from "../../test-data/test-data";
 
 export class RegistrationPage{
-    private readonly page: Page;
     private readonly fullName: Locator;
     private readonly email: Locator;
     private readonly password: Locator;
@@ -18,7 +17,6 @@ export class RegistrationPage{
     private readonly submitResult: Locator;
 
     constructor(page: Page){
-        this.page = page;
         const sectionId = page.locator('#form-elements');
 
         this.fullName = sectionId.getByRole('textbox', {name: 'Full Name'});

@@ -3,13 +3,11 @@ import { getTestDataFolder } from "../../utils/folders";
 import path from "path";
 
 export class FileUploadPage{
-    private readonly page: Page;
     private readonly fileUpload: Locator;
     private readonly uploadProgressBar: Locator;
     private readonly successfulUploadedFileName: Locator;
 
     constructor(page: Page){
-        this.page = page;
         const sectionId = page.locator('#form-elements');
 
         this.fileUpload = sectionId.getByTestId('form-elements-upload-input');
