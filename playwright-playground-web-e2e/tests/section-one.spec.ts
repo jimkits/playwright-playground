@@ -1,51 +1,78 @@
 import { test } from './fixtures';
 import { SectionOneData } from '../test-data/test-data';
-import { SliderAndColourPage } from '../pages/section-one/slider-colour-page';
 
 test.describe('Fill section 1 registration form', {
-    tag: ['@local','@production']
+    tag: ['@local','@production', '@sectionone']
 }, () => {
     test('Fill registration form and submit', async ({navigation, sectionOne}) => {
+        // Arrange
+        const registration = sectionOne.registration;
+
         // Act
         await navigation.goToSectionOne();
 
-        await sectionOne.registration.fillInFormWithCorrectValues(SectionOneData);
+        await registration.fillInFormWithCorrectValues(SectionOneData);
  
-        await sectionOne.registration.submitForm();
+        await registration.submitForm();
 
         // Assert
-        await sectionOne.registration.formSubmittedSuccessfully();
+        await registration.formSubmittedSuccessfully();
 
-        await sectionOne.registration.assertFormValuesAreCorrect(SectionOneData);
+        await registration.assertFormValuesAreCorrect(SectionOneData);
     });
 
     test('Fill registration form and reset', async ({navigation,sectionOne}) => {
+        // Arrange
+        const registration = sectionOne.registration;
+
         // Act
         await navigation.goToSectionOne();
 
-        await sectionOne.registration.fillInFormWithCorrectValues(SectionOneData);
+        await registration.fillInFormWithCorrectValues(SectionOneData);
  
-        await sectionOne.registration.resetForm();
+        await registration.resetForm();
 
         // Assert
-        await sectionOne.registration.assertFormHasIsClean();
+        await registration.assertFormHasIsClean();
     });
 });
 
 test.describe('Fill section 1 sliders and colour', {
-    tag: ['@local', '@production']
+    tag: ['@local', '@production', '@sectionone']
 }, () => {
     test('Fill sliders and colour', async ({navigation, sectionOne}) => {
+        // Arrange
+        const sliderColour = sectionOne.sliderAndColour;
+
         // Act
         await navigation.goToSectionOne();
 
-        await sectionOne.sliderAndColour.setVolume(30);
-        await sectionOne.sliderAndColour.setPriceRange(10, 40);
-        await sectionOne.sliderAndColour.setColor('#6366f1');
+        await sliderColour.setVolume(30);
+        await sliderColour.setPriceRange(10, 40);
+        await sliderColour.setColor('#6366f1');
         
         // Assert
-        await sectionOne.sliderAndColour.assertVolumeValue(30);
-        await sectionOne.sliderAndColour.assertPriceRange(10,40);
-        await sectionOne.sliderAndColour.assertColor('6366f1');
+        await sliderColour.assertVolumeValue(30);
+        await sliderColour.assertPriceRange(10,40);
+        await sliderColour.assertColor('6366f1');
+    });
+});
+
+test.describe('Fill section 1 file upload', {
+    tag: ['@local', '@production', '@sectionone']
+}, () => {
+    test('Select file to upload', async ({navigation, sectionOne}) => {
+        // Arrange
+        const fileUpload = sectionOne.fileUpload;
+        const fileName = 'Dimitrios Bitsanis CV.pdf';
+
+        // Act
+        await navigation.goToSectionOne();
+
+        await fileUpload.selectFileToUpload(fileName);
+
+        // Assert
+        await fileUpload.waitForUploadBarToFill();
+        await fileUpload.assertCorrectFileUploaded(fileName);
     });
 });
