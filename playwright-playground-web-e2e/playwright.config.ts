@@ -50,18 +50,18 @@ export default defineConfig({
       dependencies: ['setup'],
       testIgnore: /.*setup.spec.ts/
     },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    //   dependencies: ['setup'],
-    //   testIgnore: /.*setup.spec.ts/
-    // },
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    //   dependencies: ['setup'],
-    //   testIgnore: /.*setup.spec.ts/
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+      dependencies: ['setup'],
+      testIgnore: /.*setup.spec.ts/
+    },
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+      dependencies: ['setup'],
+      testIgnore: /.*setup.spec.ts/
+    },
   ],
 
   /* Run your local dev server before starting the tests */
