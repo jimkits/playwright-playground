@@ -1,16 +1,18 @@
 import { test } from './fixtures';
 import { SectionOneData } from '../test-data/test-data';
 
+test.beforeEach(async ({navigation}) => {
+        await navigation.goToSectionOne();
+});
+
 test.describe('Section 1 - registration form', {
     tag: ['@local','@production', '@sectionone']
 }, () => {
-    test('Fill registration form and submit', async ({navigation, sectionOne}) => {
+    test('Fill registration form and submit', async ({sectionOne}) => {
         // Arrange
         const registration = sectionOne.registration;
 
         // Act
-        await navigation.goToSectionOne();
-
         await registration.fillInFormWithCorrectValues(SectionOneData);
  
         await registration.submitForm();
@@ -21,13 +23,11 @@ test.describe('Section 1 - registration form', {
         await registration.assertFormValuesAreCorrect(SectionOneData);
     });
 
-    test('Fill registration form and reset', async ({navigation,sectionOne}) => {
+    test('Fill registration form and reset', async ({sectionOne}) => {
         // Arrange
         const registration = sectionOne.registration;
 
         // Act
-        await navigation.goToSectionOne();
-
         await registration.fillInFormWithCorrectValues(SectionOneData);
  
         await registration.resetForm();
@@ -40,13 +40,11 @@ test.describe('Section 1 - registration form', {
 test.describe('Section 1 - sliders and colour', {
     tag: ['@local', '@production', '@sectionone']
 }, () => {
-    test('Fill sliders and colour', async ({navigation, sectionOne}) => {
+    test('Fill sliders and colour', async ({sectionOne}) => {
         // Arrange
         const sliderColour = sectionOne.sliderAndColour;
 
         // Act
-        await navigation.goToSectionOne();
-
         await sliderColour.setVolume(30);
         await sliderColour.setPriceRange(10, 40);
         await sliderColour.setColor('#6366f1');
@@ -61,14 +59,12 @@ test.describe('Section 1 - sliders and colour', {
 test.describe('Section 1 - file upload', {
     tag: ['@local', '@production', '@sectionone']
 }, () => {
-    test('Select file to upload', async ({navigation, sectionOne}) => {
+    test('Select file to upload', async ({sectionOne}) => {
         // Arrange
         const fileUpload = sectionOne.fileUpload;
         const fileName = 'Dimitrios Bitsanis CV.pdf';
 
         // Act
-        await navigation.goToSectionOne();
-
         await fileUpload.selectFileToUpload(fileName);
 
         // Assert
@@ -80,26 +76,26 @@ test.describe('Section 1 - file upload', {
 test.describe('Section 1 - auto suggested search', {
     tag: ['@local','@production','@sectionone']
 }, () => {
-    test('Search part of text and expect correct suggestions', async ({navigation, sectionOne}) => {
+    test('Search part of text and expect correct suggestions then click on one', async ({sectionOne}) => {
         // Arrange
         const search = sectionOne.search;
+        const searchText = 'te';
+        const selections = ['Component testing','Locator strategies','Network interception'];
 
         // Act
-        await navigation.goToSectionOne();
-
-        await search.searchForText('te');
+        await search.searchForText(searchText);
+        await search.assertSuggestions(selections);
+        await search.clickOnSuggestion(selections[0]);
 
         // Assert
-        await search.assertSuggestions(['Locator strategies','Network interception','Component testing']);
+        await search.assertTextfieldHasValue(selections[0]);
     });
 
-    test('Search text that gives no suggestion', async ({navigation, sectionOne}) => {
+    test('Search text that gives no suggestion', async ({sectionOne}) => {
         // Arrange
         const search = sectionOne.search;
 
         // Act
-        await navigation.goToSectionOne();
-
         await search.searchForText('There should be no text like this');
 
         // Assert

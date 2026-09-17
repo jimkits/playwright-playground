@@ -18,8 +18,6 @@ export class FileUploadPage{
     async selectFileToUpload(fullFilePath: string){
         const fullPath = path.join(getTestDataFolder(), fullFilePath);
 
-        console.log(fullPath);
-
         await this.fileUpload.setInputFiles(fullPath);
     }
 

@@ -13,11 +13,19 @@ export class AutoSuggestSearch{
         await this.search.pressSequentially(text);
     }
 
+    async clickOnSuggestion(text: string){
+        await this.suggestions.getByText(text).click();
+    }
+
     async assertSuggestions(expected: string[]){
         await expect(this.suggestions).toHaveCount(expected.length);
 
         for (var i = 0; i < expected.length; i++){
             await expect(this.suggestions.getByText(expected[i])).toBeVisible();
         }
+    }
+
+    async assertTextfieldHasValue(text: string){
+        await expect(this.search).toHaveValue(text);
     }
 }
