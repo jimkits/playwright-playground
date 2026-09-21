@@ -1,6 +1,5 @@
 import { test } from './fixtures';
 import { SectionOneData } from '../test-data/test-data';
-import { SectionOnePage } from '../pages/section-one/section-one-page';
 
 test.beforeEach(async ({navigation}) => {
         await navigation.goToSectionOne();
@@ -135,5 +134,23 @@ test.describe('Section 1 - Dropdown fields', {
 
         // Assert
         await dropdown.assertCustomDropDownSelection(selection);
+    });
+});
+
+test.describe('Section 1 - Searchable fields', {
+    tag: ['@local','@production','@sectionone'],
+}, () => {
+    test('Search in field and select option', async ({sectionOne}) => {
+        // Arrange
+        const dropdown = sectionOne.dropdown;
+        const searchText = 'Unit';
+        const selectOption = 'United Kingdom';
+
+        // Act
+        await dropdown.typeInSearchableDropdown(searchText);
+        await dropdown.selectOptionInSearchableDropdown(selectOption);
+
+        // Assert
+        await dropdown.assertSelectedOptionInSearchableDropdown(selectOption);
     });
 });

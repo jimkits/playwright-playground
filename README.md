@@ -43,10 +43,11 @@ The website is deployed to Vercel on the address `https://playwright-playground-
 
 `npx playwright test`
 
+- Open testing UI: --ui.
 - See the browser window: add --headed.
 - Run a single project/browser: --project=chromium.
 - Run one file: npx playwright test tests/example.spec.ts.
-- Open testing UI: --ui.
+- Run one test: npx playwright test -g "name of test"
 
 ### Configure playwright.config.ts
 
