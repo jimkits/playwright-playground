@@ -125,7 +125,7 @@ test.describe('Section 1 - Multi select textfield', {
 test.describe('Section 1 - Dropdown fields', {
     tag:['@local','@production','@sectionone'],
 }, () => {
-    test('Select custom dropdown value', async ({sectionOne}) => {
+    test('Select dropdown values', async ({sectionOne}) => {
         // Arrange
         const dropdown = sectionOne.dropdown;
         const selection = 'Playwright';
